@@ -788,8 +788,8 @@ let FrontendApp = (function() {
                 });
                 Wallet.balance(nativeTokenContract, (result, data) => {
                     if (result) {
-                        swampMainBalanceTxt.text(`${parseFloat(data.formattedBalance).toFixed(2)}`);
-                        swampBalanceTxt.text(`${parseFloat(data.formattedBalance).toFixed(2)} SWAMP`);
+                        kswapMainBalanceTxt.text(`${parseFloat(data.formattedBalance).toFixed(2)}`);
+                        kswapBalanceTxt.text(`${parseFloat(data.formattedBalance).toFixed(2)} KSWAP`);
                     }
                 });
                 CryptoUtils.getBEP20TotalSupply(nativeTokenContract, (result, data) => {
@@ -885,7 +885,7 @@ let FrontendApp = (function() {
                     amount = harvestableVaults.reduce((acc, curr) => {
                         return acc + (curr.include ? curr.pendingAmount : 0);
                     }, 0);
-                    amountTxt.text(FrontendCommon.formatNumberHumanize(amount, 4) + ' SWAMP');
+                    amountTxt.text(FrontendCommon.formatNumberHumanize(amount, 4) + ' KSWAP');
                     valueTxt.text('($' + FrontendCommon.formatNumberHumanize(CryptoUtils.getCurrencyPriceUSD(currencyNativeId) * amount, 2) + ')');
                     vaultsNumberTxt.text(includedCount + '/' + vaults.length + ' vaults');
                 });

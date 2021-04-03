@@ -110,9 +110,9 @@ let FrontendApp = (function() {
                 let header = $('header'),
                     connectWalletBtn = header.find('.wallet .btn-wallet'),
                     accountBalancesInfo = header.find('.wallet .balance'),
-                    swampPriceTxt = header.find('.swamp-price .txt.price'),
-                    swampBalanceTxt = header.find('.wallet .swamp-balance'),
-                    buySwampTxt = header.find('.btn.buy-swamp'),
+                    kswapPriceTxt = header.find('.kswap-price .txt.price'),
+                    kswapBalanceTxt = header.find('.wallet .kswap-balance'),
+                    buyKswapTxt = header.find('.btn.buy-kswap'),
                     walletAddress = header.find('span.wallet-address');
                 header.bind('updateBalances', function() {
                     let provider = Wallet.getProvider(),
@@ -130,7 +130,7 @@ let FrontendApp = (function() {
                                 let amount = parseFloat(result.formattedBalance);
                                 swampBalanceTxt.text(`${FrontendCommon.formatNumberHumanize(amount,CryptoUtils.NATIVE_TOKEN_DISPLAY_DECIMALS)} ${CryptoUtils.NATIVE_TOKEN_TICKER}`);
                             } else {
-                                console.error('Cannot retrieve SWAMP balance.');
+                                console.error('Cannot retrieve KSWAP balance.');
                             }
                         });
                         if (!r.accountBalanceInitialized) {
@@ -143,16 +143,16 @@ let FrontendApp = (function() {
                     if (data !== null && data.hasOwnProperty('visibility')) {
                         connectWalletBtn.toggle(data.visibility === false);
                         accountBalancesInfo.toggleClass('hidden', data.visibility === false);
-                        swampBalanceTxt.toggleClass('hidden', data.visibility === false);
+                        kswapBalanceTxt.toggleClass('hidden', data.visibility === false);
                     }
                 });
                 header.bind('updateNativeTokenPrice', function() {
-                    swampPriceTxt.text(`$${FrontendCommon.getLocalItem('NATIVE_TOKEN_PRICE','$0.00')}`);
+                    kswapPriceTxt.text(`$${FrontendCommon.getLocalItem('NATIVE_TOKEN_PRICE','$0.00')}`);
                     let box = $('.app .content'),
                         url = box.data('api-prices-url'),
                         currencyNativeId = box.data('currency-native-id'),
-                        popupSwamp = $('#popup-buy-swamp'),
-                        popupSwampPrice = popupSwamp.find('.swamp-price');
+                        popupKswap = $('#popup-buy-kswap'),
+                        popupKswapPrice = popupKswap.find('.kswap-price');
                     $.ajax({
                         url: url,
                         type: 'GET',
@@ -161,16 +161,16 @@ let FrontendApp = (function() {
                             if (data.status === 'ok' && currencyNativeId in data.list) {
                                 let tokenPrice = parseFloat(data.list[currencyNativeId]),
                                     formattedPrice = FrontendCommon.formatNumberHumanize(tokenPrice, 2);
-                                swampPriceTxt.text(`$${formattedPrice}`);
-                                popupSwamp.attr('data-swamp-price', tokenPrice);
-                                popupSwampPrice.text(`$${formattedPrice}`);
+                                kswapPriceTxt.text(`$${formattedPrice}`);
+                                popupKswap.attr('data-kswap-price', tokenPrice);
+                                popupKswapPrice.text(`$${formattedPrice}`);
                                 FrontendCommon.setLocalItem('NATIVE_TOKEN_PRICE', formattedPrice);
                             }
                         }
                     });
                 });
-                buySwampTxt.click(function() {
-                    r.showDialogSwamp();
+                buyKswapTxt.click(function() {
+                    r.showDialogKswap();
                 });
                 tippy(accountBalancesInfo[0], {
                     content: 'Open account',
@@ -277,10 +277,10 @@ let FrontendApp = (function() {
                         }
                         ev.stopPropagation();
                     });
-                    FrontendCommon.initializeTippy(null, card.find($('.pool .tag.multiplier')), 'The multiplier represents the amount of SWAMP rewards each vaults gets. ' +
-                        'Larger the multiplier, more SWAMP rewards the vault gets.', );
+                    FrontendCommon.initializeTippy(null, card.find($('.pool .tag.multiplier')), 'The multiplier represents the amount of KSWAP rewards each vaults gets. ' +
+                        'Larger the multiplier, more KSWAP rewards the vault gets.', );
                     FrontendCommon.initializeTippy(null, card.find($('.info .pond-apy .tooltip')), 'Auto-compounded yield you receive from native farm');
-                    FrontendCommon.initializeTippy(null, card.find($('.info .swamp-apy .tooltip')), 'Bonus reward given to swamp.finance stakers');
+                    FrontendCommon.initializeTippy(null, card.find($('.info .kswap-apy .tooltip')), 'Bonus reward given to kswap.net stakers');
                     card.bind('refreshCardMain', function() {
                         r.refreshPoolCardMain(card);
                     });
@@ -417,10 +417,10 @@ let FrontendApp = (function() {
                     harvestAllBtn = box.find('.btn.harvest-all'),
                     nativeCurrencyId = $('.content').data('currency-native-id'),
                     depositValueTxt = box.find('.txt.total-deposit'),
-                    pendingContainer = box.find('.txt.swamp-pending'),
-                    pendingAmountTxt = box.find('.txt.swamp-pending span.amount'),
+                    pendingContainer = box.find('.txt.kswap-pending'),
+                    pendingAmountTxt = box.find('.txt.kswap-pending span.amount'),
                     pendingAmountCountUp = box.data('pending-amount-countup'),
-                    pendingValueTxt = box.find('.txt.swamp-pending span.value'),
+                    pendingValueTxt = box.find('.txt.kswap-pending span.value'),
                     pendingValueCountUp = box.data('pending-value-countup');
                 visibilityBtn.click(_ => {
                     let statStripOptions = FrontendCommon.getLocalItem('STATS_STRIP_VISIBLE', true);
@@ -672,17 +672,17 @@ let FrontendApp = (function() {
                 });
                 if (!tippyInstantiated) {
                     tippy(harvestBtn[0], {
-                        content: `Harvest all pending SWAMPs`,
+                        content: `Harvest all pending KSWAPs`,
                         placement: 'bottom',
                         theme: 'swampy',
                     });
                     tippy(withdrawBtn[0], {
-                        content: `Withdraw from Vault. Pending SWAMPs will be harvested.`,
+                        content: `Withdraw from Vault. Pending KSWAPs will be harvested.`,
                         placement: 'bottom',
                         theme: 'swampy',
                     });
                     tippy(depositBtn[0], {
-                        content: `Deposit your ${dataCurrencyTicker.toUpperCase()} and start earning. Pending SWAMPs will be harvested.`,
+                        content: `Deposit your ${dataCurrencyTicker.toUpperCase()} and start earning. Pending KSWAPs will be harvested.`,
                         placement: 'bottom',
                         theme: 'swampy',
                     });
@@ -769,18 +769,18 @@ let FrontendApp = (function() {
                     }
                 });
             },
-            showDialogSwamp: function() {
-                let popup = FrontendWidgets.showPopup('#popup-buy-swamp', 'Your SWAMP'),
+            showDialogKswap: function() {
+                let popup = FrontendWidgets.showPopup('#popup-buy-kswap', 'Your KSWAP'),
                     nativeTokenContract = popup.data('native-contract'),
                     nativeVaultPid = popup.data('native-pool-pid'),
-                    swampMainBalanceTxt = popup.find('.content .balance'),
-                    swampBalanceTxt = popup.find('.swamp-balance'),
-                    swampBalanceVaultTxt = popup.find('.swamp-balance-vault'),
-                    swampPriceTxt = popup.find('.swamp-price'),
-                    swampSupplyTxt = popup.find('.swamp-supply'),
-                    swampMarketCapTxt = popup.find('.swamp-market-cap'),
-                    swampPrice = parseFloat(popup.attr('data-swamp-price')),
-                    addressCopyBtn = popup.find('.swamp-contract img.copy');
+                    kswapMainBalanceTxt = popup.find('.content .balance'),
+                    kswapBalanceTxt = popup.find('.kswap-balance'),
+                    kswapBalanceVaultTxt = popup.find('.kswap-balance-vault'),
+                    kswapPriceTxt = popup.find('.kswap-price'),
+                    kswapSupplyTxt = popup.find('.kswap-supply'),
+                    kswapMarketCapTxt = popup.find('.kswap-market-cap'),
+                    kswapPrice = parseFloat(popup.attr('data-kswap-price')),
+                    addressCopyBtn = popup.find('.kswap-contract img.copy');
                 addressCopyBtn.off('click');
                 addressCopyBtn.click(function() {
                     FrontendCommon.copyToClipboard(nativeTokenContract);
@@ -795,13 +795,13 @@ let FrontendApp = (function() {
                 CryptoUtils.getBEP20TotalSupply(nativeTokenContract, (result, data) => {
                     if (result) {
                         let supply = parseInt(data.formattedSupply),
-                            marketCap = supply * swampPrice
-                        swampSupplyTxt.text(`${FrontendCommon.formatNumberHumanize(supply,0)}`);
+                            marketCap = supply * kswapPrice
+                        kswapupplyTxt.text(`${FrontendCommon.formatNumberHumanize(supply,0)}`);
                     }
                 });
                 Wallet.balanceInVault(nativeVaultPid, (result, data) => {
                     if (result) {
-                        swampBalanceVaultTxt.text(`${parseFloat(data.formattedBalance).toFixed(2)} SWAMP`);
+                        kswapBalanceVaultTxt.text(`${parseFloat(data.formattedBalance).toFixed(2)} KSWAP`);
                     }
                 });
             },
@@ -837,7 +837,7 @@ let FrontendApp = (function() {
                     urlSymbols = popup.data('url-symbols'),
                     currencyNativeId = popup.data('currency-native-id') || $('.content').data('currency-native-id'),
                     harvestableVaults = popup.data('harvestable-vaults') || [],
-                    amountTxt = popup.find('span.swamp'),
+                    amountTxt = popup.find('span.kswap'),
                     valueTxt = popup.find('span.value'),
                     vaultsNumberTxt = popup.find('.head .vaults'),
                     resetBtn = popup.find('div.reset'),
@@ -955,7 +955,7 @@ let FrontendApp = (function() {
                             pid = itm.data('pid'),
                             data = harvestableVaults.filter(vault => vault.pid === pid)[0];
                         if (typeof data !== 'undefined') {
-                            itm.find('.content .pending').text(FrontendCommon.formatNumberHumanize(data.pendingAmount, 6) + ' SWAMP');
+                            itm.find('.content .pending').text(FrontendCommon.formatNumberHumanize(data.pendingAmount, 6) + ' KSWAP');
                         }
                         itm.toggleClass('loading', harvestingVaults.includes(itm.data('pid')));
                         if (harvestedVaults.includes(itm.data('pid'))) {

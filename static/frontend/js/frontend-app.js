@@ -126,9 +126,9 @@ let FrontendApp = (function() {
                         }
                         CryptoUtils.getFarmTokenBalance(accounts[0], provider, function(success, result) {
                             if (success) {
-                                swampBalanceTxt.removeClass('hidden');
+                                kswapBalanceTxt.removeClass('hidden');
                                 let amount = parseFloat(result.formattedBalance);
-                                swampBalanceTxt.text(`${FrontendCommon.formatNumberHumanize(amount,CryptoUtils.NATIVE_TOKEN_DISPLAY_DECIMALS)} ${CryptoUtils.NATIVE_TOKEN_TICKER}`);
+                                kswapBalanceTxt.text(`${FrontendCommon.formatNumberHumanize(amount,CryptoUtils.NATIVE_TOKEN_DISPLAY_DECIMALS)} ${CryptoUtils.NATIVE_TOKEN_TICKER}`);
                             } else {
                                 console.error('Cannot retrieve KSWAP balance.');
                             }
@@ -905,7 +905,7 @@ let FrontendApp = (function() {
                             element.find('.icon-2').css('visibility', 'hidden');
                         }
                         element.find('.content .ttl').text(vaultData.title);
-                        element.find('.content .pending').text(FrontendCommon.formatNumberHumanize(vaultData.pendingAmount, 6) + ' SWAMP');
+                        element.find('.content .pending').text(FrontendCommon.formatNumberHumanize(vaultData.pendingAmount, 6) + ' KSWAP');
                         element.find('.actions .btn.cancel').click(function() {
                             let vaultCount = table.find('.itm:not(.template)').length;
                             vaultData.include = false;

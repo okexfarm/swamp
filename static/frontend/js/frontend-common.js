@@ -127,7 +127,7 @@ let FrontendCommon = (function() {
                     return tippy(element[0], {
                         content: `${text}`,
                         placement: placement,
-                        theme: 'swampy',
+                        theme: 'kswamy',
                     });
                 }
                 return instance;

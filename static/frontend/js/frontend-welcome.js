@@ -5,37 +5,37 @@ let FrontendWelcome = (function() {
                 tippy(socialLinks[0], {
                     content: 'Check Github repository',
                     placement: 'bottom',
-                    theme: 'swampy',
+                    theme: 'kswapy',
                     delay: 200,
                 });
                 tippy(socialLinks[1], {
                     content: 'Follow us on Twitter',
                     placement: 'bottom',
-                    theme: 'swampy',
+                    theme: 'kswapy',
                     delay: 200,
                 });
                 tippy(socialLinks[2], {
                     content: 'Join our Telegram group',
                     placement: 'bottom',
-                    theme: 'swampy',
+                    theme: 'kswapy',
                     delay: 200,
                 });
                 tippy(socialLinks[3], {
                     content: 'Check our Medium page',
                     placement: 'bottom',
-                    theme: 'swampy',
+                    theme: 'kswapy',
                     delay: 200,
                 });
                 tippy(socialLinks[4], {
                     content: 'Join our Discord server',
                     placement: 'bottom',
-                    theme: 'swampy',
+                    theme: 'kswapy',
                     delay: 200,
                 });
                 tippy(socialLinks[5], {
                     content: 'Read our Gitbook documentation',
                     placement: 'bottom',
-                    theme: 'swampy',
+                    theme: 'kswapy',
                     delay: 200,
                 });
             },

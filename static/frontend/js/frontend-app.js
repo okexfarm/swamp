@@ -575,7 +575,7 @@ let FrontendApp = (function() {
                                 tippyBalanceInstance = tippy(mainBalanceTxt[0], {
                                     content: `${data.formattedBalance}`,
                                     placement: 'bottom',
-                                    theme: 'swampy',
+                                    theme: 'kswapy',
                                 });
                                 card.data('tippy-balance-instance', tippyBalanceInstance);
                             } else {
@@ -674,17 +674,17 @@ let FrontendApp = (function() {
                     tippy(harvestBtn[0], {
                         content: `Harvest all pending KSWAPs`,
                         placement: 'bottom',
-                        theme: 'swampy',
+                        theme: 'kswapy',
                     });
                     tippy(withdrawBtn[0], {
                         content: `Withdraw from Vault. Pending KSWAPs will be harvested.`,
                         placement: 'bottom',
-                        theme: 'swampy',
+                        theme: 'kswapy',
                     });
                     tippy(depositBtn[0], {
                         content: `Deposit your ${dataCurrencyTicker.toUpperCase()} and start earning. Pending KSWAPs will be harvested.`,
                         placement: 'bottom',
-                        theme: 'swampy',
+                        theme: 'kswapy',
                     });
                     card.data('tippy-init', true);
                 }

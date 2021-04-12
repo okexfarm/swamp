@@ -1360,23 +1360,23 @@ main .content .title .tvl {
     filter: blur(var(--text-blur-amount))
 }
 
-.app .content .stats-stripe .txt.swamp-ttl {
+.app .content .stats-stripe .txt.kswap-ttl {
     color: var(--c-txt-4);
     margin: 0 50px 0 auto
 }
 
-.app .content .stats-stripe .txt.swamp-pending {
+.app .content .stats-stripe .txt.kswap-pending {
     width: fit-content;
     font-size: 18px;
     color: var(--c-txt-4);
     margin-right: 15px
 }
 
-.app .content .stats-stripe:not(.visible) .txt.swamp-pending:not(.loading) span {
+.app .content .stats-stripe:not(.visible) .txt.kswap-pending:not(.loading) span {
     filter: blur(var(--text-blur-amount))
 }
 
-.app .content .stats-stripe .txt.swamp-pending.loading {
+.app .content .stats-stripe .txt.kswap-pending.loading {
     width: 50px;
     height: 27px;
     margin-left: -40px
@@ -1401,7 +1401,7 @@ main .content .title .tvl {
     background: url(../img/kswap-symbol-eye-closed.svg) no-repeat
 }
 
-.app .content .stats-stripe .txt.swamp-pending span.amount {
+.app .content .stats-stripe .txt.kswap-pending span.amount {
     display: inline-block;
     width: 7ch;
     color: var(--c-primary);

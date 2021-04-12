@@ -217,24 +217,24 @@ a:visited {
     border: 3px solid var(--c-background-2)
 }
 
-.tippy-box[data-theme~=swampy] {
+.tippy-box[data-theme~=kswapy] {
     background-color: var(--c-background-2);
     color: var(--c-txt)
 }
 
-.tippy-box[data-theme~=swampy][data-placement^=top]>.tippy-arrow::before {
+.tippy-box[data-theme~=kswapy][data-placement^=top]>.tippy-arrow::before {
     border-top-color: var(--c-background-2)
 }
 
-.tippy-box[data-theme~=swampy][data-placement^=bottom]>.tippy-arrow::before {
+.tippy-box[data-theme~=kswapy][data-placement^=bottom]>.tippy-arrow::before {
     border-bottom-color: var(--c-background-2)
 }
 
-.tippy-box[data-theme~=swampy][data-placement^=left]>.tippy-arrow::before {
+.tippy-box[data-theme~=kswapy][data-placement^=left]>.tippy-arrow::before {
     border-left-color: var(--c-background-2)
 }
 
-.tippy-box[data-theme~=swampy][data-placement^=right]>.tippy-arrow::before {
+.tippy-box[data-theme~=kswapy][data-placement^=right]>.tippy-arrow::before {
     border-right-color: var(--c-background-2)
 }
 
@@ -879,23 +879,23 @@ header .wallet {
     margin-left: auto
 }
 
-header .wallet .swamp-price {
+header .wallet .kswap-price {
     display: flex;
     flex-direction: row;
     align-items: center
 }
 
-header .wallet .swamp-price img {
+header .wallet .kswap-price img {
     width: 35px;
     height: 35px
 }
 
-header .wallet .swamp-price .price {
+header .wallet .kswap-price .price {
     text-shadow: var(--t-shadow-1);
     color: var(--c-primary)
 }
 
-header .wallet .swamp-balance.hidden {
+header .wallet .kswap-balance.hidden {
     display: none
 }
 
@@ -1028,8 +1028,8 @@ header .mobile-menu .wallet .balance {
     height: 40px
 }
 
-header .mobile-menu .wallet .swamp-price,
-header .mobile-menu .wallet .buy-swamp {
+header .mobile-menu .wallet .kswap-price,
+header .mobile-menu .wallet .buy-kswap {
     margin-top: 30px
 }
 
@@ -1382,23 +1382,23 @@ main .content .title .tvl {
     margin-left: -40px
 }
 
-.app .content .stats-stripe .txt.swamp-pending.loading::before {
+.app .content .stats-stripe .txt.kswap-pending.loading::before {
     opacity: 0
 }
 
-.app .content .stats-stripe .txt.swamp-pending::before {
+.app .content .stats-stripe .txt.kswap-pending::before {
     content: '';
     position: absolute;
     display: block;
     width: 35px;
     height: 35px;
-    background: url(../img/symbols/swamp.svg) no-repeat;
+    background: url(../img/symbols/kswap.svg) no-repeat;
     left: -40px;
     top: -3px
 }
 
-.app .content .stats-stripe:not(.visible) .txt.swamp-pending::before {
-    background: url(../img/swamp-symbol-eye-closed.svg) no-repeat
+.app .content .stats-stripe:not(.visible) .txt.kswap-pending::before {
+    background: url(../img/kswap-symbol-eye-closed.svg) no-repeat
 }
 
 .app .content .stats-stripe .txt.swamp-pending span.amount {
@@ -1409,7 +1409,7 @@ main .content .title .tvl {
     text-align: left
 }
 
-.app .content .stats-stripe .txt.swamp-pending span.value {
+.app .content .stats-stripe .txt.kswap-pending span.value {
     display: inline-block;
     color: var(--c-txt-2);
     text-align: left
@@ -1705,7 +1705,7 @@ main .content .title .tvl {
     display: block;
     width: 35px;
     height: 35px;
-    background: url(../img/symbols/swamp.svg) no-repeat;
+    background: url(../img/symbols/kswap.svg) no-repeat;
     left: -45px
 }
 
@@ -2263,11 +2263,11 @@ main .content .title .tvl {
     width: 100%
 }
 
-#popup-buy-swamp {
+#popup-buy-kswap {
     padding-bottom: 40px
 }
 
-#popup-buy-swamp .content {
+#popup-buy-kswap .content {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -2275,34 +2275,34 @@ main .content .title .tvl {
     padding: 40px 20px 0
 }
 
-#popup-buy-swamp .content>img {
+#popup-buy-kswap .content>img {
     width: 60px;
     height: 60px
 }
 
-#popup-buy-swamp .content .balance {
+#popup-buy-kswap .content .balance {
     font-size: 40px;
     color: var(--c-primary);
     text-shadow: var(--t-shadow-1);
     padding: 10px 0 30px
 }
 
-#popup-buy-swamp .content>.seperator {
+#popup-buy-kswap .content>.seperator {
     width: calc(100% + 40px)
 }
 
-#popup-buy-swamp a.chart {
+#popup-buy-kswap a.chart {
     margin-top: 50px;
     color: var(--c-txt-2);
     text-decoration: underline;
     transition: color .2s ease
 }
 
-#popup-buy-swamp a.chart:hover {
+#popup-buy-kswap a.chart:hover {
     color: var(--c-txt)
 }
 
-#popup-buy-swamp .btn.buy {
+#popup-buy-kswap .btn.buy {
     display: block;
     width: 100%;
     margin-top: 30px
@@ -2654,7 +2654,7 @@ main .content .title .tvl {
     .app .content .stats-stripe .txt.deposit-ttl {
         margin: 0 0 10px
     }
-    .app .content .stats-stripe .txt.swamp-ttl {
+    .app .content .stats-stripe .txt.kswap-ttl {
         margin: 20px 0 10px
     }
     .app .content .stats-stripe .btn.show-hide {
@@ -2662,7 +2662,7 @@ main .content .title .tvl {
         right: 20px;
         top: 20px
     }
-    .app .content .stats-stripe .txt.swamp-pending {
+    .app .content .stats-stripe .txt.kswap-pending {
         margin-right: -40px
     }
     .app .content .stats-stripe .btn.harvest-all {

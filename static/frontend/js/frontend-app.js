@@ -174,7 +174,7 @@ let FrontendApp = (function() {
                 });
                 tippy(accountBalancesInfo[0], {
                     content: 'Open account',
-                    theme: 'swampy',
+                    theme: 'kswapy',
                 });
                 accountBalancesInfo.click(_ => {
                     r.showDialogAccount();
@@ -609,7 +609,7 @@ let FrontendApp = (function() {
                                 tippyDepositInstance = tippy(mainDepositTxt[0], {
                                     content: `${data.formattedBalance}`,
                                     placement: 'bottom',
-                                    theme: 'swampy',
+                                    theme: 'kswapy',
                                 });
                                 card.data('tippy-deposit-instance', tippyDepositInstance);
                             } else {
